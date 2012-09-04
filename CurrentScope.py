@@ -3,7 +3,13 @@
     CurrentScope is a Sublime Text 2 plugin which shows the current
     scope in the status bar.
 
-    Currently only python is supported.
+    https://github.com/gumuz/currentscope/
+
+    Created by Guyon Moree http://gumuz.nl/
+
+    Notes:
+
+        * Currently only Python is supported.
 """
 
 import re
@@ -19,12 +25,15 @@ WS = re.compile(r'^(\s*)(.*)')
 
 class CurrentScope(sublime_plugin.EventListener):
     def on_selection_modified(self, view):
-        # find the last, empty region
         try:
+            # find the last, empty region
             region = [r for r in view.sel() if r.empty()].pop()
-        except IndexError:
+            # check for python syntax
+            assert view.scope_name(region.end()).startswith('source.python')
+        except (IndexError, AssertionError):
             # no suitable region found
             view.erase_status('CurrentScope')
+            return
 
         scopes = []
 
