@@ -9,7 +9,15 @@ For now it only supports **Python**.
 Install
 -------
 
-A Package Control Pull request is currently pending, so for now you have to install this manually.
+### Package Control Installation
+
+**note:** This step requires [Package Control](http://wbond.net/sublime_packages/package_control/installation).
+
+1. Open the Command Palette using **[command + shift + p]** and enter "install package".
+2. Select `Package Control: Install Package` from the popup menu and press **[return]**
+3. Enter "Current Scope" and press **[return]**
+
+### Manual Installation
 
 You can **download** the latest source from [GitHub](https://github.com/gumuz/currentscope/zipball/master) and copy the *currentscope* folder to your Sublime Text "Packages" directory.
 
